@@ -36,8 +36,8 @@ def read_feedback():
 
     return data
 
-def update_feedback():
-    pass
+def update_feedback(name, email, subject, message):
+    create_feedback(name, email, subject, message)
 
 def delete_feedback(id):
     con = get_con()
@@ -47,3 +47,16 @@ def delete_feedback(id):
 
     cur.execute(query, (id,))
     close_and_commit(con)
+
+def get_feedback_by_id(id):
+    con = get_con()
+    cur = con.cursor()
+
+    query = 'select * from feedback where id = ?'
+
+    cur.execute(query, (id,))
+    data = cur.fetchall()
+    cur.close()
+    con.close()
+
+    return data

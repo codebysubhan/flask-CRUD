@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Feedback Page</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+ 
+    <h1>List of available feedbacks:</h1><br>
+    {% if data %}
+        <div class="feedback-entries">
+            {% for entry in data %}
+                <div class="feedback-card">
+                    <h3>{{ entry[1] }}</h3> <a href="/edit/{{entry[0]}}">Edit</a> <a href="/delete/{{entry[0]}}">Delete</a>
+                    <p><strong>Email:</strong> {{ entry[2] }}</p>
+                    <p><strong>Subject:</strong> {{ entry[3] }}</p>
+                    <p>{{ entry[4] }}</p>
+                </div>
+            {% endfor %}
+        </div>
+    {% else %}
+        <p>No feedback submitted yet.</p>
+    {% endif %}
+    <form action="{{ url_for('feedback') }}" method="post">
+        <input type="text" name="name" placeholder="Your Name" required>
+        <input type="email" name="email" placeholder="Your Email" required>
+        <input type="text" name="subject" placeholder="Subject" required>
+        <textarea name="message" placeholder="Feedback" rows="6" required></textarea>
+        <button type="submit" class="btn">Submit</button>
+    </form>
+
+</body>
+</html>

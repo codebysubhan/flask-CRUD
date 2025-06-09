@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Feedback App</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="hero">
+        <div class="content">
+            <h1>Welcome to the Feedback Portal</h1>
+            <p>
+                This is your space to share thoughts, vent creative chaos, or scribble feedback about anything. 
+                Whether it’s a whisper of wisdom or a roar of revolution, we’re all ears. Let your ideas dance and your opinions flow — your voice builds the future!
+            </p>
+            <a href="{{ url_for('feedback') }}" class="btn">Go to Feedback Page</a>
+        </div>
+    </div>
+</body>
+</html>
